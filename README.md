@@ -3,7 +3,7 @@
 **整合版**
 ```
 [Rule]
-RULESET,https://github.com/lorexu/conf/raw/master/zhihu_ad.list
+RULESET,https://github.com/lorexu/conf/raw/master/zhihu_ad.list,REJECT
 [Script]
 # 知乎去广告
 http-response ^https?:\/\/api\.zhihu\.com\/(moments\?|topstory\/recommend|.*\/questions|market\/header) requires-body=1,max-size=-1,script-path=https://raw.githubusercontent.com/ydzydzydz/Rules/master/Surge/resources/script/zhihu.js
