@@ -1,3 +1,7 @@
+/*
+README：https://github.com/yichahucha/surge/tree/master
+ */
+
 const path1 = "/interface/sdk/sdkad.php";
 const path2 = "/wbapplua/wbpullad.lua";
 
@@ -21,3 +25,8 @@ if (url.indexOf(path2) != -1) {
 }
 
 $done({body});
+
+/**
+ * @supported 362F170E
+ * @supported F0DED3F9
+ */
