@@ -181,5 +181,5 @@ function is_timeline_likerecommend(title) {
 }
 
 /**
- * @supported 362F170E F0DED3F9
+ * @supported 362F170E1657 F0DED3F99737
  */
