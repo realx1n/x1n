@@ -2,5 +2,3 @@ DOMAIN,buspic.gpsoo.net
 DOMAIN-KEYWORD,juicyads
 DOMAIN-KEYWORD,xyoss
 DOMAIN-SUFFIX,tagtic.cn
-URL-REGEX,https://api.zhihu.com/(ab|adx|fringe|drama|zst|commercial|ad-style-service|market/popover|search/(top|tab|preset)|.*(guide|recommendations|featured-comment-ad))
-AND,((USER-AGENT,osee2*), (NOT,((DOMAIN-SUFFIX,zhihu.com))), (NOT,((DOMAIN-SUFFIX,zhimg.com))))
