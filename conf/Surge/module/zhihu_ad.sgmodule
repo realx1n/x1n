@@ -16,4 +16,4 @@ http-response https://api.zhihu.com/people/ requires-body=1,max-size=0,script-pa
 
 
 [MITM]
-hostname = api.zhihu.com,www.zhihu.com
+hostname = %APPEND% api.zhihu.com,www.zhihu.com
