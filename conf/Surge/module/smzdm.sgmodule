@@ -4,7 +4,7 @@
 
 [Script]
 #smzdm签到
-cron "14 0 0 * * *" script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/smzdm.js
+cron "17 0 * * *" script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/smzdm.js
 
 [MITM]
 hostname = %APPEND% *.smzdm.com
