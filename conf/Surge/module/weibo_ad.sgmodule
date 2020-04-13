@@ -9,4 +9,4 @@ http-response ^https?:\/\/(sdk|wb)app\.uve\.weibo\.com(\/interface\/sdk\/sdkad.p
 
 
 [MITM]
-hostname = weibointl.api.weibo.cn, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com
+hostname = %APPEND% weibointl.api.weibo.cn, api.weibo.cn, mapi.weibo.com, *.uve.weibo.com
