@@ -1,0 +1,12 @@
+#!name=什么值得买签到
+#!desc=什么值得买签到 https://github.com/chavyleung/scripts/tree/master/smzdm
+#!system=ios
+
+[Script]
+#smzdm签到cookie
+http-request ^https:\/\/www\.smzdm\.com\/?.? script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/smzdm.cookie.js
+#smzdm签到
+cron "10 0 0 * * *" script-path=https://raw.githubusercontent.com/chavyleung/scripts/master/smzdm/smzdm.js
+
+[MITM]
+hostname = *.smzdm.com
