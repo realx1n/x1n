@@ -1,9 +1,9 @@
-DOMAIN-KEYWORD,apkpure
-DOMAIN-KEYWORD,pornhub
-DOMAIN-KEYWORD,javbus
-DOMAIN-SUFFIX,savieo.com
-DOMAIN-SUFFIX,googleapis.cn
-DOMAIN-SUFFIX,yoyu.dev
-DOMAIN,bgp.he.net
+HOST-KEYWORD,apkpure
+HOST-KEYWORD,pornhub
+HOST-KEYWORD,javbus
+HOST-SUFFIX,savieo.com
+HOST-SUFFIX,googleapis.cn
+HOST-SUFFIX,yoyu.dev
+HOST,bgp.he.net
 HOST,api-h2.tiktokv.com
 HOST,skype.com
