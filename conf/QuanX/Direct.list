@@ -1,3 +1,3 @@
-DOMAIN-SUFFIX,kxdao.net
-DOMAIN,msg.qy.net
-URL-REGEX,^https?:\/\/games\.mobileapi\.hupu\.com\/.+\/status\/init
+HOST-SUFFIX,kxdao.net
+HOST,msg.qy.net
+
