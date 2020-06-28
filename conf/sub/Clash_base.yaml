@@ -93,7 +93,7 @@ cfw-bypass:
 cfw-latency-timeout: 5000
 
 
-Rule:
+rules:
 # Unbreak
 # > Google
 - DOMAIN-SUFFIX,googletraveladservices.com,DIRECT
