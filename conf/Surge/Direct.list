@@ -1,3 +1,4 @@
 DOMAIN-KEYWORD,kxdao.net
 DOMAIN,msg.qy.net
 URL-REGEX,^https?:\/\/games\.mobileapi\.hupu\.com\/.+\/status\/init
+DOMAIN,steamcontent.com
