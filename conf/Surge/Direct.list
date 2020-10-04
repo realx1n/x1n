@@ -3,3 +3,4 @@ DOMAIN,msg.qy.net
 URL-REGEX,^https?:\/\/games\.mobileapi\.hupu\.com\/.+\/status\/init
 DOMAIN-SUFFIX,steamcontent.com
 DOMAIN-KEYWORD,rrys
+DOMAIN-KEYWORD,got002
