@@ -3,7 +3,7 @@
 #!system=ios
 
 [Script]
-滴滴出行_每日签到 = type=cron,timeout=120,cronexp=00 9 * * *,script-path=https://raw.githubusercontent.com/lorexu/ios_rule_script/master/script/didichuxing/didi_checkin.js
+滴滴出行_每日签到 = type=cron,timeout=120,cronexp=11 0 * * *,script-path=https://raw.githubusercontent.com/lorexu/ios_rule_script/master/script/didichuxing/didi_checkin.js
 滴滴出行_获取Token = type=http-request,script-path=https://raw.githubusercontent.com/lorexu/ios_rule_script/master/script/didichuxing/didi_checkin.js,pattern=^https?:\/\/api\.didialift\.com\/beatles\/userapi\/user\/user\/getuserinfo?.*city_id=(\d+).*token=([^&]*)
 滴滴出行_获取Ticket = type=http-request,script-path=https://raw.githubusercontent.com/lorexu/ios_rule_script/master/script/didichuxing/didi_checkin.js,pattern=^https?:\/\/as\.xiaojukeji\.com\/ep\/as\/toggles\?.*location_cityid=(\d+).*&ticket=([^&]*)
 滴滴出行_获取LotteryId = type=http-request,script-path=https://raw.githubusercontent.com/lorexu/ios_rule_script/master/script/didichuxing/didi_checkin.js,pattern=^https?:\/\/bosp-api\.xiaojukeji\.com\/bosp-api\/lottery\/info?.*lid=([^&]*)
