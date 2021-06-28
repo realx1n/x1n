@@ -1,0 +1,5 @@
+#!name=百度贴吧去广告
+#!desc=百度贴吧去广告
+[Rule]
+AND,((USER-AGENT,TBClient*), (OR,((AND,((GEOIP,CN,no-resolve), (DEST-PORT,443))), (DOMAIN-KEYWORD,gdt), (DOMAIN-KEYWORD,feed), (DOMAIN-KEYWORD,toutiao), (DOMAIN-KEYWORD,snssdk), (DOMAIN-KEYWORD,kuaishou), (DOMAIN-KEYWORD,mobads)))),REJECT
+URL-REGEX,^http:\/\/(m|nad.+)\.baidu\.com\/(baidu\.php|.+\.mp4),REJECT
