@@ -1,0 +1,9 @@
+#!name=功能-TestFlight下载
+#!desc=TestFlight下载区域限制解除
+#!system=ios
+
+[Script]
+
+TF下载修正 = type=http-request,pattern=^https?:\/\/testflight\.apple\.com\/v\d\/accounts\/.+?\/install$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/lorexu/x1n/master/script/TF_Download.js
+[MITM]
+hostname = %APPEND% testflight.apple.com
