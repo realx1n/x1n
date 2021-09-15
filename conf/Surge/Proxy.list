@@ -7,3 +7,6 @@ DOMAIN-SUFFIX,yoyu.dev
 DOMAIN,bgp.he.net
 DOMAIN,api-h2.tiktokv.com
 DOMAIN,skype.com
+# TestFlight
+DOMAIN,beta.apple.com
+DOMAIN,testflight.apple.com
