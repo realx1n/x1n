@@ -4,4 +4,4 @@ URL-REGEX,^https?:\/\/games\.mobileapi\.hupu\.com\/.+\/status\/init
 DOMAIN-SUFFIX,steamcontent.com
 DOMAIN-KEYWORD,rrys
 DOMAIN-KEYWORD,got002
-DOMAIN-SUFFIX,mail.infomaniak.com
+DOMAIN,mail.infomaniak.com
