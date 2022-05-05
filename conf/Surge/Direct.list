@@ -5,6 +5,4 @@ DOMAIN-SUFFIX,steamcontent.com
 DOMAIN-KEYWORD,rrys
 DOMAIN-KEYWORD,got002
 DOMAIN,mail.infomaniak.com
-process-name,pl.soildexplorer
-IP-CIDR,172.18.0.120
-IP-CIDR,172.18.0.66
+DOMAIN,bantop.direct
