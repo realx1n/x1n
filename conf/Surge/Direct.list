@@ -6,3 +6,4 @@ DOMAIN-KEYWORD,rrys
 DOMAIN-KEYWORD,got002
 DOMAIN,mail.infomaniak.com
 DOMAIN,bantop
+IP-CIDR,198.18.0.0/16,no-resolve
