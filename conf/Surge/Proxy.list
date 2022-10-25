@@ -10,3 +10,4 @@ DOMAIN,skype.com
 # TestFlight
 DOMAIN,beta.apple.com
 DOMAIN,testflight.apple.com
+DOMAIN-SUFFIX,cnbeta.com
