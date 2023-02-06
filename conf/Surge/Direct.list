@@ -9,3 +9,5 @@ DOMAIN,bantop
 DOMAIN-KEYWORD,safelinks
 DOMAIN,wpxz.org
 DOMAIN,www.arp220.us
+IP-CIDR,146.56.166.39/32
+IP-CIDR,146.56.170.7/32
