@@ -55,7 +55,7 @@ hosts:
 
 # DNS 设置
 dns:
-  enable: true
+  启用: true
   ipv6: false
   listen: 127.0.0.1:5450
   default-nameserver:
@@ -1618,6 +1618,7 @@ rules:
 - IP-CIDR,17.0.0.0/8,Apple,no-resolve
 
 # Local Area Network
+- IP-CIDR,192.168.31.0/24,DIRECT
 - IP-CIDR,192.168.0.0/16,DIRECT
 - IP-CIDR,10.0.0.0/8,DIRECT
 - IP-CIDR,172.16.0.0/12,DIRECT
