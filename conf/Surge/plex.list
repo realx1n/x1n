@@ -1,5 +1,4 @@
-#DOMAIN-SUFFIX,partyland.cc
-#DOMAIN-SUFFIX,plex.com
-#DOMAIN-SUFFIX,plex.tv
+DOMAIN,v4.plex.tv
+DOMAIN,plex.vv.gd
 DOMAIN-SUFFIX,plex.direct
 DOMAIN,pubsub.plex.tv
