@@ -2,3 +2,4 @@
 #DOMAIN-SUFFIX,plex.com
 #DOMAIN-SUFFIX,plex.tv
 DOMAIN-SUFFIX,plex.direct
+DOMAIN,pubsub.plex.tv
