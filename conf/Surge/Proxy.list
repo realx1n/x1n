@@ -10,4 +10,4 @@ DOMAIN,api-h2.tiktokv.com
 DOMAIN,skype.com
 DOMAIN-SUFFIX,xn--ngstr-lra8j.com
 DOMAIN-SUFFIX,xn--ngstr-cn-8za9o.com
-DOMAIN-SUFFIX,services.googleapis.cn
+PROCESS-NAME,com.android.vending
