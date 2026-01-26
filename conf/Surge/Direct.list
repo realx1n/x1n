@@ -1,8 +1,6 @@
-DOMAIN,x1n.tech
-DOMAIN,bigbrox.top
-DOMAIN,y-too.com
-DOMAIN,tyo.funmedia.domoo.xyz
-DOMAIN,auto.plex.funmedia.10101.io
+DOMAIN-SUFFIX,x1n.tech
+DOMAIN-SUFFIX,bigbrox.top
+DOMAIN-SUFFIX,y-too.com
 DOMAIN-KEYWORD,bilibili
 DOMAIN-SUFFIX,jd.com
 DOMAIN-SUFFIX,360buyimg.com
