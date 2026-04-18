@@ -26,3 +26,7 @@ IP-CIDR,217.142.140.35/32
 DOMAIN,myip.ipip.net
 IP-CIDR,100.94.247.75/32
 IP-CIDR,132.226.169.131/32
+DOMAIN,v4.plex.tv
+DOMAIN,plex.vv.gd
+DOMAIN-SUFFIX,plex.direct
+DOMAIN,pubsub.plex.tv
