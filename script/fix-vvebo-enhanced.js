@@ -1,77 +1,53 @@
 /**
- * VVebo 用户主页时间线修复 v3 —— 修复分页游标语义
- * 核心修复：原版把 max_id（加载更早）错误映射成 since_id（加载更新），导致翻页返回空 → 主页空白
- *   v3 方案：
- *     - 无游标（打开/刷新）：tab + page=1，重置分页计数
- *     - since_id（下拉刷新拉新）：去掉游标 → 返回最新（不增量但不空白）
- *     - max_id（上拉加载更多）：转成 tab 的 page=N 翻页，N 由计数器维护
- *   uid 多源捕获 + 卡片自适应 + 去重保留
+ * VVebo 用户主页时间线修复 v4.1 —— user_timeline 补 uid 直连（最简方案）
+ *
+ * 实测结论（gsid 有效期内）：
+ *   - user_timeline?uid=xxx → 返回完整原生 statuses（50条+翻页）✅ 接口没废
+ *   - user_timeline 无 uid  → 微博改版后不返回数据（VVebo 旧版请求恰好无 uid → 空白）
+ *   - tab 重写方案 → 翻页不稳、跨用户访问异常（v3 已废弃）
+ *
+ * 方案：
+ *   - user_timeline 带 uid（看别人）→ 原样透传
+ *   - user_timeline 无 uid（看自己）→ 补缓存 uid
+ *   - 响应是原生 statuses 格式，max_id/since_id 翻页原生保留
+ *
+ * uid 缓存 = 当前查看账号（看谁缓存谁）：
+ *   - users/show 响应体 id（VVebo 进任何主页都先发此请求，最可靠）
+ *   - remind/unread_count URL uid（当前登录账号兜底）
  */
+
 let url = $request.url;
 
-function getUidFrom(u) {
+function uidFrom(u) {
   let m = u.match(/[?&]uid=(\d+)/);
-  if (m) return m[1];
-  m = u.match(/containerid=230413(\d+)_/);
-  if (m) return m[1];
-  return undefined;
+  return m ? m[1] : undefined;
 }
 
-function flattenCards(cards, out) {
-  for (let c of (cards || [])) {
-    if (!c) continue;
-    out.push(c);
-    if (Array.isArray(c.card_group) && c.card_group.length) flattenCards(c.card_group, out);
+if (url.includes("users/show") && $response) {
+  // ===== users/show 响应体：捕获当前查看账号（URL 无 uid 也能拿） =====
+  try {
+    let d = JSON.parse($response.body);
+    if (d && d.id) $persistentStore.write(String(d.id), "vvebo_uid");
+  } catch (e) {
+    console.log("[VVebo] users/show parse error: " + e.message);
   }
-  return out;
-}
-
-if (url.includes("users/show") || url.includes("remind/unread_count")) {
-  let uid = getUidFrom(url);
+  $done({});
+} else if (url.includes("remind/unread_count")) {
+  // ===== remind：捕获当前登录账号 =====
+  let uid = uidFrom(url);
   if (uid) $persistentStore.write(uid, "vvebo_uid");
   $done({});
 } else if (url.includes("statuses/user_timeline")) {
-  let uid = getUidFrom(url) || $persistentStore.read("vvebo_uid") || $persistentStore.read("uid");
-  let newUrl = url.replace("statuses/user_timeline", "profile/statuses/tab");
-
-  if (/max_id=/.test(newUrl)) {
-    // ===== 上拉加载更多：max_id → page 翻页 =====
-    let page = parseInt($persistentStore.read("vvebo_page") || "1", 10) + 1;
-    if (isNaN(page) || page < 1) page = 2;
-    newUrl = newUrl.replace(/[?&]max_id=[^&]*/, "");
-    newUrl = newUrl + "&page=" + page;
-    $persistentStore.write(String(page), "vvebo_page");
-  } else {
-    // ===== 打开/下拉刷新：page=1 重置计数（since_id 一并丢弃，避免增量语义返回空） =====
-    newUrl = newUrl.replace(/[?&]since_id=[^&]*/, "").replace(/[?&]max_id=[^&]*/, "");
-    newUrl = newUrl + "&page=1";
-    $persistentStore.write("1", "vvebo_page");
-  }
-
-  if (!/containerid=/.test(newUrl)) {
-    newUrl = newUrl + "&containerid=230413" + uid + "_-_WEIBO_SECOND_PROFILE_WEIBO";
-  }
-  $done({ url: newUrl });
-} else if (url.includes("profile/statuses/tab")) {
-  try {
-    let data = JSON.parse($response.body);
-    let flat = flattenCards(data.cards, []);
-    let statuses = flat.filter(c => c && c.mblog).map(c => c.mblog);
-    if (!statuses.length) {
-      statuses = flat.filter(c => c && c.card_type === 9).map(c => c.mblog);
+  // ===== user_timeline：带 uid 透传，无 uid 补缓存 uid =====
+  let urlUid = uidFrom(url);
+  if (!urlUid) {
+    let cached = $persistentStore.read("vvebo_uid");
+    if (cached) {
+      $done({ url: url + (url.includes("?") ? "&" : "?") + "uid=" + cached });
+    } else {
+      $done({});
     }
-    let seen = new Set();
-    statuses = statuses.filter(s => {
-      let k = (s && (s.idstr || s.id || s.mid)) || "";
-      if (!k) return true;
-      if (seen.has(k)) return false;
-      seen.add(k);
-      return true;
-    });
-    // since_id 置空：避免 VVebo 下次带 since_id 刷新导致增量空响应
-    $done({ body: JSON.stringify({ statuses, since_id: "", total_number: 100 }) });
-  } catch (e) {
-    console.log("[VVebo] error: " + e.message);
+  } else {
     $done({});
   }
 } else {
