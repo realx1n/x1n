@@ -62,18 +62,15 @@ if (url.includes("users/show") || url.includes("remind/unread_count")) {
     if (!statuses.length) {
       let typeCount = {};
       flat.forEach(c => { let t = c.card_type; typeCount[t] = (typeCount[t] || 0) + 1; });
-      let msg = "cards=" + ((data.cards || []).length) + " flat=" + flat.length + " types=" + JSON.stringify(typeCount);
-      // ===== 诊断增强：打印完整响应体 + 每张卡的文本摘要 =====
+      // ===== 诊断：完整响应体进 console.log，前 400 字符进通知 =====
       console.log("[VVebo] RAW BODY >>> " + $response.body);
       flat.forEach((c, i) => {
         let brief = { card_type: c.card_type, itemid: c.itemid, title: c.title, desc: c.desc, text: (c.mblog ? c.mblog.text : undefined), show_type: c.show_type };
         console.log("[VVebo] CARD[" + i + "] " + JSON.stringify(brief).slice(0, 400));
       });
-      let firstCard = flat[0] || {};
-      let firstBrief = { card_type: firstCard.card_type, title: firstCard.title, desc: firstCard.desc, itemid: firstCard.itemid };
-      let notifMsg = msg + " first=" + JSON.stringify(firstBrief).slice(0, 150);
-      $notification.post("VVebo诊断：无微博数据", notifMsg, "详见Loon脚本日志");
-      console.log("[VVebo] " + msg);
+      let rawBrief = String($response.body).slice(0, 400);
+      $notification.post("VVebo诊断", "RAW> " + rawBrief, "详见Loon脚本日志");
+      console.log("[VVebo] " + "cards=" + ((data.cards || []).length) + " flat=" + flat.length + " types=" + JSON.stringify(typeCount));
     }
     $done({ body: JSON.stringify({ statuses, since_id: sinceId, total_number: 100 }) });
   } catch (e) {
