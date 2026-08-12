@@ -1,12 +1,11 @@
 #!name= VVebo 修复增强版
-#!desc=修复VVebo用户主页时间线显示和粉丝列表（uid多源捕获+卡片自适应+空数据诊断）
+#!desc=修复VVebo用户主页时间线显示（user_timeline补uid直连）和粉丝列表
 #!author=realx1n
 
 [Script]
-http-request ^https:\/\/api\.weibo\.cn\/2\/remind\/unread_count\? script-path = https://raw.githubusercontent.com/realx1n/x1n/master/script/fix-vvebo-enhanced.js, tag = VV修复-uid捕获1
-http-request ^https:\/\/api\.weibo\.cn\/2\/users\/show\? script-path = https://raw.githubusercontent.com/realx1n/x1n/master/script/fix-vvebo-enhanced.js, tag = VV修复-uid捕获2
-http-request ^https:\/\/api\.weibo\.cn\/2\/statuses\/user_timeline\? script-path = https://raw.githubusercontent.com/realx1n/x1n/master/script/fix-vvebo-enhanced.js, tag = VV修复-时间线重写
-http-response ^https:\/\/api\.weibo\.cn\/2\/profile\/statuses\/tab\? script-path = https://raw.githubusercontent.com/realx1n/x1n/master/script/fix-vvebo-enhanced.js, requires-body = true, tag = VV修复-tab转换
+http-request ^https:\/\/api\.weibo\.cn\/2\/remind\/unread_count\? script-path = https://raw.githubusercontent.com/realx1n/x1n/master/script/fix-vvebo-enhanced.js, tag = VV修复-uid捕获
+http-response ^https:\/\/api\.weibo\.cn\/2\/users\/show\? script-path = https://raw.githubusercontent.com/realx1n/x1n/master/script/fix-vvebo-enhanced.js, requires-body = true, tag = VV修复-uid捕获2
+http-request ^https:\/\/api\.weibo\.cn\/2\/statuses\/user_timeline\? script-path = https://raw.githubusercontent.com/realx1n/x1n/master/script/fix-vvebo-enhanced.js, tag = VV修复-补uid
 http-response ^https:\/\/api\.weibo\.cn\/2\/cardlist\? script-path = https://raw.githubusercontent.com/realx1n/x1n/master/script/fix-vvebo-fans.js, requires-body = true, tag = VV修复-粉丝页
 
 [MITM]
